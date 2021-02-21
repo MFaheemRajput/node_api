@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Users List</title>
+    <style>
+    </style>
+</head>
+
+<body onload="script();">
+    <ul id="Users">
+
+    </ul>
+
+    <script>
+
+        function script() {
+            console.log("Hello World");
+            loadUsers();
+        }
+
+        const loadUsers = async () => {
+            const response = await fetch('http://localhost:8080/users', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const users = await response.json(); //extract JSON from the http response
+            // do something with myJson
+            var ul = document.getElementById("Users");
+            for(user in users) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(`Name ${user.name}`));
+                ul.appendChild(li);
+                console.log(`Hello World ${users}`);
+            }
+            
+        }
+
+    </script>
+</body>
+
+</html>

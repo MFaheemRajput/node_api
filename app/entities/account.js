@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const modelName = 'User';
+const modelName = 'Account';
 
 const opts = {
     timestamps: true,
@@ -19,10 +19,19 @@ const DbSchema = new Schema({
         type: String
     },
     email: {
-        type: String
+        type: String,
     },
     title: {
         type: String
+    },
+    type: {
+        type: Number
+    },
+    isActive: {
+        type: Boolean
+    },
+    balance: {
+        type: Number
     }
 }, opts);
 
